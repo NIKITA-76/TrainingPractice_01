@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +13,7 @@ namespace TNS_Task_02
         
         static void Main(string[] args)
         {
-           string slovo = " ";
+           string slovo = " "; // "Обнуляем" переменную
 
             do
             {
