@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,28 +9,35 @@ namespace TNS_Task_01
 
     class Program
     {
-        //Стоимость 1 кристалла
-        public const int rate = 100;
+       
+        public const int Dimonds_cost = 100;   //Стоимость 1 кристалла
+
+
         static void Main(string[] args)
         {
-            Console.WriteLine("Введите золото: ");
-            int gold = Convert.ToInt32(Console.ReadLine());
-            Console.WriteLine($"Сколько кристаллов вы хотите купить? Курс 1 кр. = {rate} золота");
-            int crystals = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Введите ваше количество золота: ");
+            int Gold = Convert.ToInt32(Console.ReadLine());
 
-            //Попытка обойтись без if/else
-            try
+
+            Console.WriteLine($"Сколько кристаллов вы хотите обменять в банке Гоблинов? Сейчас курс 1 кр. = {Dimonds_cost} золота");
+            int Dimonds = Convert.ToInt32(Console.ReadLine());
+
+            
+            try                             //Это очень плохие костыли, но зато без if
             {
-                int res = gold - crystals * rate;
-                int[] arr = new int[gold + 1];
-                arr[res] = 1;
-                Console.WriteLine($"Успешно. У вас {res} золота и {crystals} кристаллов.");
+                int calculation = Gold - Dimonds * Dimonds_cost;
+                int[] arr = new int[Gold + 1];
+                arr[calculation] = 1;
+                Console.WriteLine($"Успешно. У вас {calculation} золота и {Dimonds} кристаллов.");
+
                 Console.ReadKey();
             }
-            catch (Exception e)
+            catch (Exception e)            // Ловля ошибок
             {
-                Console.WriteLine($"Сделка не удалась - у вас {gold} золота и 0 кристаллов.");
-                int ex = Convert.ToInt32(Console.ReadLine());
+                Console.WriteLine($"Простите, но у вас очень мало золота, вы нищий и бедный! Убирайтесь!! \n{Gold} золота и 0 кристалл(ов).");
+
+                int fail = Convert.ToInt32(Console.ReadLine());
+
                 Console.ReadKey();
             };
         }
@@ -38,3 +45,4 @@ namespace TNS_Task_01
 
 
 }
+
