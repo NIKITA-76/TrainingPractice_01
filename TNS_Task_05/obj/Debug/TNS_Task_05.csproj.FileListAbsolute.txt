@@ -1,0 +1,7 @@
+C:\Users\NIKITA76\source\repos\TrainingPractice_01\TNS_Task_05\bin\Debug\TNS_Task_05.exe.config
+C:\Users\NIKITA76\source\repos\TrainingPractice_01\TNS_Task_05\bin\Debug\TNS_Task_05.exe
+C:\Users\NIKITA76\source\repos\TrainingPractice_01\TNS_Task_05\bin\Debug\TNS_Task_05.pdb
+C:\Users\NIKITA76\source\repos\TrainingPractice_01\TNS_Task_05\obj\Debug\TNS_Task_05.csprojAssemblyReference.cache
+C:\Users\NIKITA76\source\repos\TrainingPractice_01\TNS_Task_05\obj\Debug\TNS_Task_05.csproj.CoreCompileInputs.cache
+C:\Users\NIKITA76\source\repos\TrainingPractice_01\TNS_Task_05\obj\Debug\TNS_Task_05.exe
+C:\Users\NIKITA76\source\repos\TrainingPractice_01\TNS_Task_05\obj\Debug\TNS_Task_05.pdb
