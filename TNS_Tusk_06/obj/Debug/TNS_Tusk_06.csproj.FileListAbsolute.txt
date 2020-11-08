@@ -1,0 +1,7 @@
+C:\Users\NIKITA76\source\repos\TrainingPractice_01\TNS_Tusk_06\bin\Debug\TNS_Tusk_06.exe.config
+C:\Users\NIKITA76\source\repos\TrainingPractice_01\TNS_Tusk_06\bin\Debug\TNS_Tusk_06.exe
+C:\Users\NIKITA76\source\repos\TrainingPractice_01\TNS_Tusk_06\bin\Debug\TNS_Tusk_06.pdb
+C:\Users\NIKITA76\source\repos\TrainingPractice_01\TNS_Tusk_06\obj\Debug\TNS_Tusk_06.csproj.CoreCompileInputs.cache
+C:\Users\NIKITA76\source\repos\TrainingPractice_01\TNS_Tusk_06\obj\Debug\TNS_Tusk_06.exe
+C:\Users\NIKITA76\source\repos\TrainingPractice_01\TNS_Tusk_06\obj\Debug\TNS_Tusk_06.pdb
+C:\Users\NIKITA76\source\repos\TrainingPractice_01\TNS_Tusk_06\obj\Debug\TNS_Tusk_06.csprojAssemblyReference.cache
