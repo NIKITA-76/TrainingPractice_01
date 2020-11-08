@@ -10,15 +10,17 @@ namespace TNS_Task_04
     class Progaram
     {
         static void Main(string[] args)
-        {
+        {   int MinusHPBoss = 0;
             Random HpB = new Random();
             Random HpP = new Random();
-
-            int HpBoss = HpB.Next(200,700);  // Случайное здоровье Эйроха
+            int trying = 2;
+            int HpBossMain = HpB.Next(200,700);  // Случайное здоровье Эйроха
             int HpPlayer = HpP.Next(225,500); // Случайное здоровье Игрока
             int UltimateDamage = 0; // Если равно 3, срабатывает Атронах
-            bool Attack = false;
+            bool FirstAttack = true;
+
             Random bsd = new Random(); // Создание рандома для урона Босса
+            int BossDamage = 0;
             Random hlp = new Random(); // Создание рандома для прибавления здоровья
             Random kam = new Random(); // Создание рандома для пропуска хода Эйроха от Валуна
             Console.WriteLine("Вы маг отшельник выполняющий разные заказы. Сейчас же вас заказали жители одной из деревнь, да бы избавиться от духа Эйроха, что поедает их скот.\n");
@@ -26,18 +28,31 @@ namespace TNS_Task_04
             Console.WriteLine("Победите Эйроха! \n");
             Console.WriteLine("Ваша атака проходит после атаки Духа!!\n");
             Console.WriteLine("Так как Эйрох вам не известен, вы не знаете что за заклинание он накалдует. Вы будете получать урон в диапазоне от 10 до 80 единиц \n");
+            Console.WriteLine("Что бы начать, нажмите на любую клавишу...\n");
+            Console.ReadKey();
+            Console.Clear();
+            Console.Clear();
             do
             {
 
 
-                
+
             chooseAgain:
+                if (FirstAttack == true)
+                {
+                    BossDamage = 0;
+                    FirstAttack = false;
+                }
+                
+                Console.WriteLine($"Вы нанесли: {MinusHPBoss}");
+                Console.WriteLine($"Вам нанесли: {BossDamage}");
+                
                 Console.WriteLine($"Ваше здровье: {HpPlayer}");
-                Console.WriteLine($"Здоровье Эйроха: {HpBoss}\n");
+                Console.WriteLine($"Здоровье Эйроха: {HpBossMain}\n");
                 Console.Write("Выберите заклинание на этот ход:\n" +
-                "1.Огненная стрела (20 урона) \n" +
-                "2.Струя горячего воздуха(Выбивет Босса из равновесия, если вас атаковали, у вас есть время залечить раны (+70 Здоровья)).Шанс 50%!.Лечить себя, можно при потереи здоровья ниже 200\n" +
-                "3.Летящий валун 80 (При попадании с 50% вероятность оглушает босса на 1 ход)\n" +
+                "1.Огненная стрела 20 урона \n" +
+                "2.Струя горячего воздуха(Выбивет Босса из равновесия, если у вас здоровье ниже 200ед., у вас есть возможность залечить раны (+70 Здоровья)).Шанс 50%!.Лечить себя, можно при потереи здоровья ниже 200ед.\n" +
+                "3.Летящий валун 70 урона (При попадании с 50% вероятность оглушает босса на 1 ход)\n" +
                 "4.Вы можете призвать Атронаха вам в помощь который нанесет 150 урона, но для этого вам нужно 3 раза повторить это заклинание\n" +
                 "5.Приказывает Атронаху атаковать врага  \n");
 
@@ -47,29 +62,43 @@ namespace TNS_Task_04
                 catch
                 {
                     Console.WriteLine("Вы ввели не тот тип данных.");
+                    Console.ReadKey();
+                    Console.Clear();
                     goto chooseAgain;
                 }
                 Console.Clear();
 
-                int BossDamage = bsd.Next(10, 80); // Получение случайного числа (Урона Эйроха)
                 int chanseHelp = hlp.Next(0, 2);  // 50% шанс на срабатывание заклинания 
                 int stun = kam.Next(0, 2); // 50% шанс на пропуск хода Эйроха
-                
+                BossDamage = bsd.Next(10, 80); // Урон Эйроха
+
+
+
+
+
 
                 switch (spell) // Выборка 
                 {
                     case (1):
-                        HpBoss -= 20;
+                        MinusHPBoss = 20;
+                        HpBossMain -= MinusHPBoss;
                         break;
                     case (2):
-                        if (chanseHelp == 1 && Attack == true)
+                        if (chanseHelp == 1)
                         {
                          Console.WriteLine("Эйрох выбит из равновесия!");
                          BossDamage = 0;
-                            if (HpPlayer < 200) // проверка на то, что бы у игрока не было больше здоровья чем положен, и если оно выше положенного, сбрасывает до 200
+                            if (HpPlayer < 200) // проверка на то, что бы игрок не мог себя лечить, если здоровье больше 200ед.
                             {
                                 HpPlayer += 70;
+                                MinusHPBoss = 0;
+                                Console.WriteLine("Здоровье восстановленно на 70ед.");
                             }
+                            else
+                            {
+                                Console.WriteLine("Но вы не можете восстановить здоровье, так как вы емеете больше 200ед.!");
+                            }
+
                             
 
                         }
@@ -81,7 +110,8 @@ namespace TNS_Task_04
                             Console.WriteLine("Эйрох оглушен\n");
                             BossDamage = 0;
                         }
-                        HpBoss -= 80;
+                        MinusHPBoss = 70;
+                        HpBossMain -= MinusHPBoss;
                         break;
                     case (4): // при достижении 3 вызывается Атронах 
                         UltimateDamage = UltimateDamage + 1;
@@ -90,42 +120,53 @@ namespace TNS_Task_04
                         if (UltimateDamage > 3)
                         {
                             Console.WriteLine("Атронах уже призван и вы пропускаете ход!!");
-
+                            MinusHPBoss = 0;
                         }
-                        if (UltimateDamage == 3)
+                        else if (UltimateDamage == 3)
                         {
                             Console.WriteLine("Вы призвали Атронаха, и он тут же нанес Эйроху 90 едениц урона!\n");
-                            HpBoss -= 90;
-                            
+                            MinusHPBoss = 90;
+                            HpBossMain -= MinusHPBoss;
+
 
                         }
+                        else
+                        {
+                            Console.WriteLine($"Призыв Атронаха будет через {trying} ход(а) ");
+                            trying--;
+                            MinusHPBoss = 0;
+                        }
+
                         break;
                     case (5):
-                        HpBoss -= 90;
+                        MinusHPBoss = 90;
+                        HpBossMain -= MinusHPBoss;
 
                         break;
                         
                     default:
                         Console.WriteLine("Вы ничего не скастовали! И Эйрох воспользовался вашей ошибкой!");
+                        MinusHPBoss = 0;
                         break;
 
 
                 }
                 
+                
                 HpPlayer -= BossDamage;
-                Attack = true;
+                
 
 
 
 
-            } while (HpBoss > 0 && HpPlayer > 0); // окончание битвы при смерти одного из двух 
+            } while (HpBossMain > 0 && HpPlayer > 0); // окончание битвы при смерти одного из двух 
             if (HpPlayer <= 0 )
             {
-                Console.WriteLine("Вы погибли... И босс победил");
+                Console.WriteLine("Вы погибли... И Эйрох победил");
                 Console.ReadKey();
 
             }
-            else if (HpBoss <= 0)
+            else if (HpBossMain <= 0)
             {
                 Console.WriteLine("Вы победили Великого Эйроха. Деревня может спать спокойно!!");
                 Console.ReadKey();
